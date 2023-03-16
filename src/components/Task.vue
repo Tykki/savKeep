@@ -28,21 +28,16 @@
   <!-- </section> -->
 </template>
 <script setup scoped>
-import { ref } from 'vue';
-
-const props = defineProps(["task", "deleteTask", "togglePin", 'toggleUpdate']);
-const test = () =>{
-console.log('test')
-}
+defineProps(["task", "deleteTask", "togglePin", 'toggleUpdate']);
 </script>
 <style lang="scss" scoped>
-.opts-hover{
-  .opts{
+.opts-hover {
+  .opts {
     opacity: 0;
-    transition: all .5s ease;
+    transition: all 0.5s ease;
   }
-  &:hover{
-    .opts{
+  &:hover {
+    .opts {
       opacity: 1;
 
     }

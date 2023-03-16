@@ -7,7 +7,6 @@ import App from "./App.vue";
 import router from "./router";
 
 import "./assets/main.scss";
-console.log('load DB')
 import "./db.js"
 const app = createApp(App);
 

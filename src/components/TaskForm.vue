@@ -125,9 +125,7 @@ const checkValid = () => {
 valid.value = !valid.value
 }
 const handleFocus = (e) => {
-  // console.log(e)
   if(valid.value === false){
-  // console.log('fail')
     createTask()    
   }
 }
@@ -269,7 +267,6 @@ box-shadow: none;
 .title-overlay{
     position: absolute;
     width: 100%;
-    // left: 0;
     top: 5px;
     z-index: -10;
     

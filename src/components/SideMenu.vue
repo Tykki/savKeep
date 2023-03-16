@@ -1,5 +1,5 @@
 <template>
-    <div v-if="width > 768" id="sideMenu" class="collapse collapse-horizontal show">
+    <div v-if="width > 768" id="sideMenu" class="collapse collapse-horizontal show mt-2">
         <div id="sideMenu-nav" class="list-group border-0">
             <li v-if="user"
                 :class="{active: route.params.id === user.uid}"
@@ -66,7 +66,6 @@ const onResize = () => {
 onMounted(()=>{
     width.value = window.innerWidth
     window.addEventListener('resize', onResize)
-    // console.log(width)
 
 })
 </script>

@@ -48,22 +48,18 @@ export const useTaskStore = defineStore("taskStore", {
   actions: {
     async getTasks() {
       const defaultTasks = query(collection(getFirestore(), 'tasks'), orderBy('timestamp', 'desc'), limit(100));
-      
       // Start listening to the query.
       onSnapshot(defaultTasks, (snapshot) => {
         this.tasks = []
-        // console.log(snapshot.docs)
         snapshot.forEach((task) => {
-          // console.log(task)
-            // console.log(task.data())
-            this.tasks.push(task.data());
+          this.tasks.push(task.data());
         });
       });
     },
-    async  addTask(task) {
+    async addTask(task) {
       try {
-       const docRef = doc(collection(getFirestore(), 'tasks'))
-       await setDoc(docRef, {
+        const docRef = doc(collection(getFirestore(), 'tasks'))
+        await setDoc(docRef, {
           id: docRef.id,
           title: task.title,
           detail: task.detail,
@@ -72,8 +68,7 @@ export const useTaskStore = defineStore("taskStore", {
           timestamp: serverTimestamp(),
           createdBy: task.createdBy
         });
-      }
-      catch(error) {
+      } catch (error) {
         console.error('Error writing new message to Firebase Database', error);
       }
     },
@@ -82,24 +77,21 @@ export const useTaskStore = defineStore("taskStore", {
     },
     async togglePin(id) {
       const task = this.tasks.find((t) => t.id === id);      
-      // console.log(task)
       await updateDoc(doc(getFirestore(), 'tasks', id), {
         pinned: !task.pinned
       })
     },
     async updateTask(field, value) {
       const taskUpdates = {}
-      value ? taskUpdates[field] = value : taskUpdates[field] = serverTimestamp()
-      
+      value ? taskUpdates[field] = value : taskUpdates[field] = serverTimestamp()      
       await updateDoc(doc(getFirestore(), 'tasks', this.toUpdate.id), taskUpdates).catch(err =>{
-        console.log(err)
+        //Need to catch errors here
       })
     },
     async toggleUpdate(task) {
       const modal = ref(new Modal('#taskUpdateModal'))
       this.toUpdate = task
       modal.value.toggle()
-      // console.log(modal.value._element)
     },
     async clearUpdate() {
       this.toUpdate = {}

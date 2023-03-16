@@ -19,7 +19,6 @@ const makingTask = ref(false);
 const taskCreated = (task) => {
   makingTask.value = false;
   if (task.title || task.detail) {
-    console.log(task)
     taskStore().addTask(task);
   }
 

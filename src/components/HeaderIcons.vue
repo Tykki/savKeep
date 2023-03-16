@@ -55,8 +55,6 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue"
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth"
 defineProps(['user', 'signOutUser'])
 
 const changeTheme = () => {

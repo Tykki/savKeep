@@ -147,8 +147,6 @@ const handleUpdate = () => {
 }
 
 const fillTags = () => {
-  // tagsInput.value = props.task.tags.map((t, i) =>({name: t, id: 'u'+i }))
-  // console.log('tags test', props.task.tags.map((t, i) =>({name: t, id: 'u'+i })))
   for (const tag of props.task.tags) {
     toggleTag(tag, props.tags.indexOf(tag))
   }
