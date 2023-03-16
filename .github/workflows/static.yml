@@ -40,7 +40,7 @@ jobs:
       - name: Test Key
         env:
           VITE_DB_KEY: ${{ secrets.VITE_DB_KEY }}
-        run: console.log(process.env, import.meta.env)
+        run: console.log(import.meta.env)
       - name: Build
         run: npm run build
       - name: Setup Pages
