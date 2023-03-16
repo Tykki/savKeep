@@ -37,6 +37,8 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
+        env:
+          VITE_DB_KEY: ${{ secrets.VITE_DB_KEY }}
       - name: Build
         run: npm run build
       - name: Setup Pages
