@@ -1,6 +1,6 @@
-# keep
+# Sav Keep
 
-This template should help get you started developing with Vue 3 in Vite.
+Clone of Google Keep made with Vue 3 Composition API and FireBase
 
 ## Recommended IDE Setup
 
