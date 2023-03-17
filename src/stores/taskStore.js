@@ -1,7 +1,7 @@
 import {
   getFirestore,
   collection,
-  addDoc,
+  // addDoc,
   query,
   orderBy,
   limit,
@@ -93,9 +93,10 @@ export const useTaskStore = defineStore("taskStore", {
       await updateDoc(
         doc(getFirestore(), "tasks", this.toUpdate.id),
         taskUpdates
-      ).catch((err) => {
-        //Need to catch errors here
-      });
+      );
+      // .catch((err) => {
+      //Need to catch errors here
+      // });
     },
     async toggleUpdate(task) {
       const modal = ref(new Modal("#taskUpdateModal"));

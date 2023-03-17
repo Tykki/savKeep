@@ -81,8 +81,6 @@ const password = ref("");
 const errMsg = ref("");
 const successMsg = ref("");
 
-const user = ref(authStore.user);
-
 const clearInput = () => {
   email.value = "";
   password.value = "";

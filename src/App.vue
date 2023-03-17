@@ -1,15 +1,13 @@
 <script setup>
 import { RouterView } from "vue-router";
-import { useStore } from "./stores/store.js";
 import { useTaskStore } from "./stores/taskStore.js";
 import { useAuthStore } from "./stores/authStore.js";
-import HeaderMenu from "./components/Header.vue";
+import HeaderMenu from "./components/HeaderMenu.vue";
 import SignIn from "./components/SignInForm.vue";
 import AcctSet from "./components/AccountSettings.vue";
 import TaskUpdate from "./components/TaskUpdate.vue";
 import SideMenu from "./components/SideMenu.vue";
 
-const store = useStore();
 const taskStore = useTaskStore();
 const authStore = useAuthStore();
 taskStore.getTasks();
