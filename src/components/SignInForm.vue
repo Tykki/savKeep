@@ -9,7 +9,9 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="signInModalLabel">Sign Into Sav Keep</h1>
+          <h1 class="modal-title fs-5" id="signInModalLabel">
+            Sign Into Sav Keep
+          </h1>
           <button
             type="button"
             class="btn-close"
@@ -30,9 +32,7 @@
                 placeholder="Email"
                 required
               />
-              <label for="email" class="ms-1"
-                >Email</label
-              >
+              <label for="email" class="ms-1">Email</label>
             </div>
             <div class="form-floating">
               <input
@@ -43,23 +43,28 @@
                 placeholder="Password"
                 required
               />
-              <label for="password" class="ms-1"
-                >Password</label
-              >
+              <label for="password" class="ms-1">Password</label>
             </div>
             <p v-if="errMsg">{{ errMsg }}</p>
             <p v-if="successMsg">{{ successMsg }}</p>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" @click="register" class="btn btn-outline-warning">
+          <button
+            type="button"
+            @click="register"
+            class="btn btn-outline-warning"
+          >
             Sign Up
           </button>
-          <button type="button" @click="authStore.signInG" class="btn btn-outline-primary">
-        Use Google</button>
-          <button type="button" class="btn btn-primary">
-            Sign In
+          <button
+            type="button"
+            @click="authStore.signInG"
+            class="btn btn-outline-primary"
+          >
+            Use Google
           </button>
+          <button type="button" class="btn btn-primary">Sign In</button>
         </div>
       </div>
     </div>
@@ -67,46 +72,42 @@
 </template>
 
 <script setup>
-import {ref} from 'vue'
-import {useAuthStore} from '@/stores/authStore.js'
+import { ref } from "vue";
+import { useAuthStore } from "@/stores/authStore.js";
 
-const authStore = useAuthStore()
+const authStore = useAuthStore();
 const email = ref("");
 const password = ref("");
 const errMsg = ref("");
-const successMsg = ref("")
+const successMsg = ref("");
 
-const user = ref(authStore.user)
+const user = ref(authStore.user);
 
 const clearInput = () => {
-  email.value = ""
-  password.value = ""
-  errMsg.value = ""
-  successMsg.value = ""
-}
+  email.value = "";
+  password.value = "";
+  errMsg.value = "";
+  successMsg.value = "";
+};
 
 const register = () => {
-  errMsg.value = ""
-  successMsg.value = ""
-  authStore.register(email.value, password.value, errMsg, successMsg)
+  errMsg.value = "";
+  successMsg.value = "";
+  authStore.register(email.value, password.value, errMsg, successMsg);
   // if(!errMsg.value){
   //   email.value = ""
   //   password.value = ""
   //   successMsg.value = "Registration Successful"
   // }
-
-  
-}
-
-
+};
 </script>
 
 <style lang="scss" scoped>
-.btn-primary{
+.btn-primary {
   background-color: var(--bs-purple);
   outline-color: var(--bs-purple);
   border-color: var(--bs-indigo);
-  &:active{
+  &:active {
     background-color: var(--bs-indigo);
   }
 }

@@ -4,17 +4,16 @@ import { useStore } from "./stores/store.js";
 import { useTaskStore } from "./stores/taskStore.js";
 import { useAuthStore } from "./stores/authStore.js";
 import HeaderMenu from "./components/Header.vue";
-import SignIn from "./components/SignInForm.vue"
-import AcctSet from "./components/AccountSettings.vue"
-import TaskUpdate from "./components/TaskUpdate.vue"
+import SignIn from "./components/SignInForm.vue";
+import AcctSet from "./components/AccountSettings.vue";
+import TaskUpdate from "./components/TaskUpdate.vue";
 import SideMenu from "./components/SideMenu.vue";
 
 const store = useStore();
 const taskStore = useTaskStore();
 const authStore = useAuthStore();
-taskStore.getTasks()
-authStore.initFirebaseAuth()
-
+taskStore.getTasks();
+authStore.initFirebaseAuth();
 </script>
 
 <template>
@@ -27,7 +26,9 @@ authStore.initFirebaseAuth()
     />
     <section class="row">
       <SideMenu :tags="taskStore.tags" :user="authStore.user" class="col-2" />
-      <RouterView class="col" :tasks="taskStore.tasks"
+      <RouterView
+        class="col"
+        :tasks="taskStore.tasks"
         :tag="taskStore.tag"
         :tags="taskStore.tags"
         :userTasks="taskStore.userTasks"
@@ -54,7 +55,7 @@ authStore.initFirebaseAuth()
 <style lang="scss">
 // @import "node_modules/bootstrap/scss/bootstrap";
 
-.dropdown-item:active{
+.dropdown-item:active {
   background-color: var(--bs-purple);
 }
 
@@ -63,7 +64,7 @@ authStore.initFirebaseAuth()
 }
 
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
+/* Firefox */
 * {
   scrollbar-width: auto;
   scrollbar-color: var(--bs-purple) var(--bs-body-bg);
