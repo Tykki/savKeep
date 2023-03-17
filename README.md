@@ -2,13 +2,19 @@
 
 Clone of Google Keep made with Vue 3 Composition API and FireBase
 
-## Recommended IDE Setup
+## Usage
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Create a `.env.local` file at the root path and enter your firebase project creds:
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+```
+VITE_FB_API_KEY=
+VITE_FB_AUTH_DOMAIN=
+VITE_FB_PROJECT_ID=
+VITE_FB_STORAGE_BUCKET=
+VITE_FB_MESSAGING_SENDER_ID=
+VITE_FB_APP_ID=
+VITE_FB_MEASUREMENT_ID=
+```
 
 ## Project Setup
 
