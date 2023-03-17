@@ -1,6 +1,6 @@
 <template lang="">
   <section
-    @focusout="handleFocus"
+    
     @mousedown="checkValid"
     @mouseup="checkValid"
     id="taskForm"
@@ -286,9 +286,16 @@ onMounted(() => {
   width: 90%;
   display: inline-block;
 }
-.task-input:focus-visible {
-  outline: none;
+
+
+.task-input {
+  max-height: 30em;
+  overflow: auto;
+  &:focus-visible {
+    outline: none;
+  }
 }
+
 
 .title-overlay {
   position: absolute;
