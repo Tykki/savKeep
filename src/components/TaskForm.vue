@@ -1,6 +1,6 @@
 <template lang="">
   <section
-    
+    @focusout="handleFocus"
     @mousedown="checkValid"
     @mouseup="checkValid"
     id="taskForm"
@@ -44,7 +44,10 @@
       </section>
 
       <section v-if="tagsInput[0]" class="text-start ps-3">
-        <span v-for="tag of tagsInput" class="badge rounded-pill border me-1"
+        <span
+          v-for="tag of tagsInput"
+          :key="tag.id"
+          class="badge rounded-pill border me-1"
           >{{ tag.name }}
           <button
             @click="removeTag(tag.name, tag.id)"
@@ -145,7 +148,7 @@ const detailPlaceholder = ref(true);
 const valid = ref(false);
 
 // click controls for closing form on focusout
-const focus = (e) => {
+const focus = () => {
   valid.value = true;
   document.querySelector("#detailInput").focus();
   valid.value = false;
@@ -153,7 +156,7 @@ const focus = (e) => {
 const checkValid = () => {
   valid.value = !valid.value;
 };
-const handleFocus = (e) => {
+const handleFocus = () => {
   if (valid.value === false) {
     createTask();
   }
@@ -287,7 +290,6 @@ onMounted(() => {
   display: inline-block;
 }
 
-
 .task-input {
   max-height: 30em;
   overflow: auto;
@@ -295,7 +297,6 @@ onMounted(() => {
     outline: none;
   }
 }
-
 
 .title-overlay {
   position: absolute;

@@ -6,8 +6,6 @@ import {
   createUserWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { ref } from "vue";
-import { useRoute } from "vue-router";
 import { defineStore } from "pinia";
 
 export const useAuthStore = defineStore("authStore", {
@@ -31,10 +29,11 @@ export const useAuthStore = defineStore("authStore", {
     },
     async signInG() {
       var provider = new GoogleAuthProvider();
-      await signInWithPopup(getAuth(), provider).then((userCredential) => {
-        // get creds here due to SOP error but does not stay updated from stateObserver
-        // this.user = userCredential.user
-      });
+      await signInWithPopup(getAuth(), provider);
+      //   .then((userCredential) => {
+      //     get creds here due to SOP error but does not stay updated from stateObserver
+      //     this.user = userCredential.user
+      // });
       document.querySelector("#signInClose").click();
     },
     signOutUser() {

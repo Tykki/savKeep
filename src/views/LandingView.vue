@@ -1,8 +1,8 @@
 <script setup>
 import TaskInput from "@/components/TaskInput.vue";
-import Task from "@/components/Task.vue";
+import Task from "@/components/TaskNote.vue";
 import { useRoute } from "vue-router";
-import { onMounted, onUpdated, ref } from "vue";
+import { onUpdated, ref } from "vue";
 
 const props = defineProps([
   "tasks",
@@ -15,9 +15,6 @@ const props = defineProps([
   "toggleUpdate",
 ]);
 const route = useRoute();
-const test = () => {
-  console.log("test");
-};
 const setLabels = ref(false);
 onUpdated(() => {
   if (route.name === "userTasks") {
@@ -53,24 +50,26 @@ onUpdated(() => {
 
       <section class="pinned">
         <h6 v-if="setLabels" class="text-start ms-5 col-12 w-75">Pinned</h6>
-        <Task
-          v-if="route.name === 'userTasks'"
-          v-for="task of userTasks(route.params.id).filter((t) => t.pinned)"
-          :key="task.id"
-          :task="task"
-          :togglePin="togglePin"
-          :deleteTask="deleteTask"
-          :toggleUpdate="toggleUpdate"
-        />
-        <Task
-          v-if="route.params.id"
-          v-for="task of tag(route.params.id).filter((t) => t.pinned)"
-          :key="task.id"
-          :task="task"
-          :togglePin="togglePin"
-          :deleteTask="deleteTask"
-          :toggleUpdate="toggleUpdate"
-        />
+        <template v-if="route.name === 'userTasks'">
+          <Task
+            v-for="task of userTasks(route.params.id).filter((t) => t.pinned)"
+            :key="task.id"
+            :task="task"
+            :togglePin="togglePin"
+            :deleteTask="deleteTask"
+            :toggleUpdate="toggleUpdate"
+          />
+        </template>
+        <template v-if="route.params.id">
+          <Task
+            v-for="task of tag(route.params.id).filter((t) => t.pinned)"
+            :key="task.id"
+            :task="task"
+            :togglePin="togglePin"
+            :deleteTask="deleteTask"
+            :toggleUpdate="toggleUpdate"
+          />
+        </template>
         <Task
           v-else
           v-for="task of tasks.filter((t) => t.pinned)"
@@ -84,24 +83,26 @@ onUpdated(() => {
 
       <section class="">
         <h6 v-if="setLabels" class="text-start ms-5 col-12 w-75">Others</h6>
-        <Task
-          v-if="route.name === 'userTasks'"
-          v-for="task of userTasks(route.params.id).filter((t) => !t.pinned)"
-          :key="task.id"
-          :task="task"
-          :togglePin="togglePin"
-          :deleteTask="deleteTask"
-          :toggleUpdate="toggleUpdate"
-        />
-        <Task
-          v-if="route.params.id"
-          v-for="task of tag(route.params.id).filter((t) => !t.pinned)"
-          :key="task.id"
-          :task="task"
-          :togglePin="togglePin"
-          :deleteTask="deleteTask"
-          :toggleUpdate="toggleUpdate"
-        />
+        <template v-if="route.name === 'userTasks'">
+          <Task
+            v-for="task of userTasks(route.params.id).filter((t) => !t.pinned)"
+            :key="task.id"
+            :task="task"
+            :togglePin="togglePin"
+            :deleteTask="deleteTask"
+            :toggleUpdate="toggleUpdate"
+          />
+        </template>
+        <template v-if="route.params.id">
+          <Task
+            v-for="task of tag(route.params.id).filter((t) => !t.pinned)"
+            :key="task.id"
+            :task="task"
+            :togglePin="togglePin"
+            :deleteTask="deleteTask"
+            :toggleUpdate="toggleUpdate"
+          />
+        </template>
         <Task
           v-else
           v-for="task of tasks.filter((t) => !t.pinned)"

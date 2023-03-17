@@ -6,7 +6,11 @@
     <div class="card-body" @click="toggleUpdate(task)">
       <h5 class="card-title">{{ task.title }}</h5>
       <p class="card-text">
-        {{ task.detail.length > 255 ? task.detail.substring(0, 255)+'...':task.detail }}
+        {{
+          task.detail.length > 255
+            ? task.detail.substring(0, 255) + "..."
+            : task.detail
+        }}
       </p>
     </div>
     <div class="ms-1 mb-1 opts">

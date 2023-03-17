@@ -185,7 +185,7 @@ const handleUpdate = () => {
   tagsInput.value
     .map((t) => t.name)
     .sort()
-    .toString() !== props.task.tags.sort().toString()
+    .toString() !== Array.from(props.task.tags).sort().toString()
     ? props.updateTask(
         "tags",
         tagsInput.value.map((t) => t.name)
@@ -296,7 +296,7 @@ const handleDelete = () => {
 onMounted(() => {
   const modal = document.querySelector("#taskUpdateModal");
 
-  modal.addEventListener("shown.bs.modal", (e) => {
+  modal.addEventListener("shown.bs.modal", () => {
     props.task.title
       ? (titleInput.value = props.task.title) &&
         (titlePlaceholder.value = false)
@@ -310,7 +310,7 @@ onMounted(() => {
     document.querySelector("#detailInputUpdate").focus();
   });
 
-  modal.addEventListener("hide.bs.modal", (e) => {
+  modal.addEventListener("hide.bs.modal", () => {
     deleted.value ? true : handleUpdate();
     clearForm();
   });
