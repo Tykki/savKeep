@@ -5,12 +5,15 @@
   >
     <div class="card-body" @click="toggleUpdate(task)">
       <h5 class="card-title">{{ task.title }}</h5>
-      <p class="card-text">{{ task.detail }}</p>
+      <p class="card-text">
+        {{ task.detail.length > 255 ? task.detail.substring(0, 255)+'...':task.detail }}
+      </p>
     </div>
     <div class="ms-1 mb-1 opts">
       <button
         @click="deleteTask(task.id)"
-        class="border-0 rounded-circle btn btn-outline-secondary">
+        class="border-0 rounded-circle btn btn-outline-secondary"
+      >
         <span class="mdi mdi-trash-can"></span>
       </button>
       <button
@@ -21,14 +24,13 @@
         <span v-if="task.pinned" class="mdi mdi-pin"></span>
         <span v-else class="mdi mdi-pin-outline"></span>
       </button>
-
     </div>
   </div>
 
   <!-- </section> -->
 </template>
 <script setup scoped>
-defineProps(["task", "deleteTask", "togglePin", 'toggleUpdate']);
+defineProps(["task", "deleteTask", "togglePin", "toggleUpdate"]);
 </script>
 <style lang="scss" scoped>
 .opts-hover {
@@ -39,12 +41,12 @@ defineProps(["task", "deleteTask", "togglePin", 'toggleUpdate']);
   &:hover {
     .opts {
       opacity: 1;
-
     }
   }
 }
 .note {
-  max-width: 14%;
+  max-width: 14em;
   min-width: 150px;
+  max-height: 26em;
 }
 </style>

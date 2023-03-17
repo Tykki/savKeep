@@ -1,12 +1,12 @@
 <script setup>
-import Icons from './HeaderIcons.vue'
+import Icons from "./HeaderIcons.vue";
 
-defineProps(['signOutUser', 'user']);
+defineProps(["signOutUser", "user"]);
 </script>
 
 <template>
   <header>
-    <nav  class="navbar">
+    <nav class="navbar">
       <div class="container-fluid text-center d-inline-block">
         <section class="row">
           <div class="col-md-4 col-6 col-lg-3">
@@ -52,7 +52,6 @@ defineProps(['signOutUser', 'user']);
           </div>
 
           <Icons :user="user" :signOutUser="signOutUser" />
-
         </section>
       </div>
     </nav>

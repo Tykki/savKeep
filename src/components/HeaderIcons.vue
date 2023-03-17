@@ -15,14 +15,20 @@
       </button>
 
       <ul class="dropdown-menu shadow">
-        <li><a class="dropdown-item" href="#" @click="changeTheme">Change Theme</a></li>
+        <li>
+          <a class="dropdown-item" href="#" @click="changeTheme"
+            >Change Theme</a
+          >
+        </li>
         <li><a class="dropdown-item" href="#">Donate</a></li>
         <li>
           <a class="dropdown-item" href="#">Download App</a>
         </li>
       </ul>
     </section>
-    <button class="border-0 rounded-circle fs-4 btn btn-outline-secondary d-none d-sm-inline-block">
+    <button
+      class="border-0 rounded-circle fs-4 btn btn-outline-secondary d-none d-sm-inline-block"
+    >
       <span class="mdi mdi-grid"></span>
     </button>
 
@@ -32,22 +38,38 @@
         data-bs-toggle="dropdown"
       >
         <span v-if="!user" class="mdi mdi-account-circle"></span>
-        <img v-else :src="user.photoURL" alt="" class="rounded-circle user-img">
+        <img
+          v-else
+          :src="user.photoURL"
+          alt=""
+          class="rounded-circle user-img"
+        />
       </button>
 
       <ul class="dropdown-menu shadow">
         <li v-if="!user">
-          <a class="dropdown-item"
+          <a
+            class="dropdown-item"
             data-bs-toggle="modal"
             href="#"
-            data-bs-target="#signInModal">
+            data-bs-target="#signInModal"
+          >
             Sign In
           </a>
         </li>
-        <li><a class="dropdown-item" data-bs-toggle="modal" href="#"
-            data-bs-target="#acctSettingsModal">Account Settings</a></li>
+        <li>
+          <a
+            class="dropdown-item"
+            data-bs-toggle="modal"
+            href="#"
+            data-bs-target="#acctSettingsModal"
+            >Account Settings</a
+          >
+        </li>
         <li v-if="user">
-          <RouterLink class="dropdown-item"  @click="signOutUser" href="#" to="/">Sign Out</RouterLink>
+          <RouterLink class="dropdown-item" @click="signOutUser" href="#" to="/"
+            >Sign Out</RouterLink
+          >
         </li>
       </ul>
     </section>
@@ -55,30 +77,27 @@
 </template>
 
 <script setup>
-defineProps(['user', 'signOutUser'])
+defineProps(["user", "signOutUser"]);
 
 const changeTheme = () => {
-  if (document.querySelector('body').attributes[0].value === 'dark') {
-    document.querySelector('body').setAttribute("data-bs-theme", "light")
+  if (document.querySelector("body").attributes[0].value === "dark") {
+    document.querySelector("body").setAttribute("data-bs-theme", "light");
   } else {
-    document.querySelector('body').setAttribute("data-bs-theme", "dark")
-
+    document.querySelector("body").setAttribute("data-bs-theme", "dark");
   }
-}
-
-
+};
 </script>
 
 <style lang="scss" scoped>
-#icons{
+#icons {
   display: inline-block;
 }
-.user-img{
+.user-img {
   width: 30px;
 }
 @media screen and (max-width: 332px) {
-  .user-img{
-  width: 24px;
-}
+  .user-img {
+    width: 24px;
+  }
 }
 </style>

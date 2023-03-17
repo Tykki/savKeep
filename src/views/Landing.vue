@@ -4,34 +4,49 @@ import Task from "@/components/Task.vue";
 import { useRoute } from "vue-router";
 import { onMounted, onUpdated, ref } from "vue";
 
-const props = defineProps(['tasks', 'tag', 'tags', 'deleteTask', 'togglePin', 'user', 'userTasks', 'toggleUpdate' ])
+const props = defineProps([
+  "tasks",
+  "tag",
+  "tags",
+  "deleteTask",
+  "togglePin",
+  "user",
+  "userTasks",
+  "toggleUpdate",
+]);
 const route = useRoute();
-const test = () =>{
-  console.log('test')
-}
-const setLabels = ref(false)
-onUpdated(()=>{
-  if (route.name === 'userTasks') {
+const test = () => {
+  console.log("test");
+};
+const setLabels = ref(false);
+onUpdated(() => {
+  if (route.name === "userTasks") {
     if (props.userTasks(route.params.id).filter((t) => t.pinned).length) {
-      setLabels.value = true
-    } else {setLabels.value = false}
+      setLabels.value = true;
+    } else {
+      setLabels.value = false;
+    }
   } else if (route.params.id) {
     if (props.tag(route.params.id).filter((t) => t.pinned).length) {
-      setLabels.value = true
-    } else {setLabels.value = false}
+      setLabels.value = true;
+    } else {
+      setLabels.value = false;
+    }
   } else {
     if (props.tasks.filter((t) => t.pinned).length) {
-      setLabels.value = true
-    } else {setLabels.value = false}
+      setLabels.value = true;
+    } else {
+      setLabels.value = false;
+    }
   }
-})
+});
 </script>
 
 <template>
   <main class="pt-5">
     <div class="text-center">
-
-      <TaskInput class="w-input mx-auto mb-4 card border-secondary shadow"
+      <TaskInput
+        class="w-input mx-auto mb-4 card border-secondary shadow"
         :tags="tags"
         :user="user"
       />
@@ -102,7 +117,7 @@ onUpdated(()=>{
 </template>
 
 <style lang="scss" scoped>
-.w-input{
+.w-input {
   min-width: 300px;
   max-width: 600px;
 }
